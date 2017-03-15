@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta property="og:title" content="myshop-meta:product-title" />
+		<meta property="og:image" content="myshop-meta:product-image" />
+        <style style="myshop-block:style-productlist-moreinfo" type="text/css">
+			
+        </style>
+        <style style="myshop-block:style-productlist-related">
+			.myshp_basket_related_product_image_container, .myshp_basket_related_product_image{
+                myshop-width: product-image-width px;
+				padding-right:10px;
+            }
+			.myshp_basket_related_product_image{
+				padding-right:10px;
+            }
+			.myshp_basket_related_product_image img {
+				max-width:100%;
+			}
+        </style>
+		<style>
+			
+		</style>
+		<script type="text/javascript">
+           
+			 $(window).load(function(){
+			 	var gallery_width = $('.myshp_info_image_large').width()+"px";
+				
+				/* Set Gallery Init 
+				$('.myshp_info_image_large img').each(function(){
+				    $(this).width(($(this).parents('.myshp_info_image_large').width()));
+				});
+				*/
+				$('.myshp_info_extra_images_thumbs a').click(function(){
+					$('.myshp_info_image_large').cycle($(this).index());
+				});
+				
+                $('.myshp_info_image_large').cycle({ 
+                    fx: 'fade',
+		            prev: '.myshp_gallery_navigation_prev',
+					next: '.myshp_gallery_navigation_next',
+					timeout: '5000',
+					speed: '1000',
+					pauseOnPagerHover: true,
+					containerResize: true,
+				    slideResize: false,
+					fit: 1,
+					width: '100%',
+                    activePagerClass: 'activeSlide',
+					pager: '.myshp_gallery_navigation_pager',
+					onPagerEvent : function(){
+						console.log(gallery_width);
+					},
+					before: function() {
+			            $('.myshp_gallery_navigation_caption').html($(this).attr('alt'));
+			        },
+					
+					after: function(currSlideElement, nextSlideElement, options, forwardFlag){
+						currentSlide = $('.activeSlide').html();
+					    if(!currentSlide) currentSlide = "1";
+					    $('.myshp_gallery_navigation_pager_total').html(currentSlide + '/' + options.slideCount);
+                        $('a.myshp_gallery_navigation_max').attr('href', $(nextSlideElement).find("img").attr("src"));
+						if($.fn.lightBox){
+							$('a.myshp_gallery_navigation_max').lightBox();
+						}
+                    }		
+                });
+                
+                /*$('.myshp_gallery_navigation_next, .myshp_gallery_navigation_prev').css('top', $('.myshp_info_image_large').height()/2-15);*/
+                
+				/* Set Begining Button */
+				$( ".myshp_gallery_navigation_beginning" ).click(function() { 
+				    $('.myshp_info_image_large').cycle(0);
+				});
+				
+				/* Set Play and Pause Button */
+				$( ".myshp_gallery_play" ).click(function() {
+					if ( $(this).find('.ui-button-text').text() === "play" ) {
+						$(this).find('.ui-button-text').html('pause');
+						$(this).find('.ui-icon').removeClass('ui-icon-play').addClass('ui-icon-pause');
+						$('.myshp_info_image_large').cycle('resume');
+					} else {
+						$(this).find('.ui-button-text').html('play');
+						$(this).find('.ui-icon').removeClass('ui-icon-pause').addClass('ui-icon-play');
+						$('.myshp_info_image_large').cycle('pause');
+					}
+				});
+				/* Set End Button */
+				$( ".myshp_gallery_navigation_end" ).click(function() { 
+				    $('.myshp_info_image_large').cycle($('.myshp_info_image_large').size()-1);
+				});
+				function onAfter(curr, next, opts) {
+				    var index = opts.currSlide;
+				    $('#prev')[index == 0 ? 'hide' : 'show']();
+				    $('#next')[index == opts.slideCount - 1 ? 'hide' : 'show']();
+				}
+				function onAfter1(curr,next,opts) {
+				   currentSlide = $(".thePager a.activeSlide").html();
+				    if(!currentSlide) currentSlide = "1";
+				    $('.slideCaption').html(currentSlide + '/' + opts.slideCount);
+				}
+            });
+        </script>
+    </head>
+    <body>
+        <!-- Begin - Product list Search block -->
+		<!--div class="box">
+		<table width="100%" class="table-condensed"><tr><td>
+        <div style="myshop-has:searchblock;">
+            <div style="myshop-is:search-method-quick">
+                <div class="myshp_info_search_block myshp_info_search_quick">
+                    <fieldset>
+                    	<table width="100%" class="table-condensed">
+                    		<tr>
+                    			<td>
+                    				<label><span style="myshop-resource:allproducts">Alle producten</span></label>			
+                    			</td>
+								<td>
+									<span style="myshop-search-field:control-global;"/>			
+								</td>
+								<td>
+									<a style="myshop-action:search;" class="myshp_button myshp_button_search btn btn-default btn-sm btn-primary" data-role="button" data-icon="search" data-iconpos="right">
+				                        <span>
+											<span style="myshop-resource:search">
+					                            Search
+					                        </span>
+										</span>
+				                    </a>			
+								</td>
+                    		</tr>
+                    	</table>
+                    </fieldset>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div style="myshop-is:search-method-extended">
+                <div class="myshp_info_search_block myshp_info_search_extended">
+                    <div style="myshop-repeat:search-fields;">
+                        <fieldset>
+							<table style="myshop-not-has:search-field-max;" width="100%" class="table-condensed">
+	                            <tr>
+	                            	<td>
+	                            		<label><span style="myshop-search-field:label"></span>:</label>	
+	                            	</td>
+	                                <td>
+	                            		<span style="myshop-search-field:control"></span>    	
+	                                </td>
+	                            </tr>
+	                        </table>
+						</fieldset>
+                        <span style="myshop-has:search-field-max;">
+							<fieldset class="myshp_info_search_extended_min_max">
+	                            <table width="100%" class="table-condensed">
+	                                <tr>
+	                                	<td>
+	                                		<label>
+												<span style="myshop-search-field:label"></span>&#160;
+			                                    <span style="myshop-resource:from;">
+			                                        van
+			                                    </span>:
+											</label>	
+	                                	</td>
+	                                    <td>
+	                                    	<input size="8" style="myshop-search-field:control"/>
+	                                    </td>
+	                                	<td>
+	                                		<label>
+												<span style="myshop-search-field:label"></span>&#160;
+			                                    <span style="myshop-resource:to;">
+			                                        t/m
+			                                    </span>:
+											</label>	
+	                                	</td>
+	                                    <td>
+	                                    	<input size="8" style="myshop-search-field:control-max"/>
+	                                    </td>
+									</tr>
+	                            </table>
+							</fieldset>
+                        </span>
+                    </div>
+                    <div style="myshop-has:global-search">
+						<fieldset>
+							<table width="100%" class="table-condensed">
+								<tr>
+									<td>	
+										<label>
+					                        <span style="myshop-resource:allproducts">
+					                            Alle producten
+					                        </span>
+					                    </label>
+									</td>
+		                    		<td>
+		                    			<span style="myshop-search-field:control-global;"></span>
+									</td>
+									<td>
+										<a style="myshop-action:search;" class="myshp_button myshp_button_search btn btn-default btn-sm btn-primary" data-role="button" data-icon="search" data-iconpos="right">
+					                        <span>
+												<span style="myshop-resource:search">
+						                            Search
+						                        </span>
+											</span>
+					                    </a>		
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+					</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+		</td></tr></table>
+		</div -->
+		<!-- End - Product list Search block -->
+		
+        <div class="clear"></div>
+        <!-- Check if there are products -->
+		
+		<!--
+        <div>
+        -->
+		
+		<!-- Navigation bar -->
+        <div class="myshp_info_navigation box">
+			<div class="pages">
+				<!-- Back to overview button -->
+				<a style="myshop-action:back" class="myshp_info_back_button btn btn-default btn-sm btn-primary" data-role="button" data-inline="true" data-icon="arrow-l">
+					<span class="myshp_button_icon">&lt;&lt;&nbsp;</span>
+					<span>
+						<span style="myshop-resource:back.toproductlist">
+							terug naar overzicht
+						</span>
+					</span>
+				</a>
+				<!-- Next product button -->
+				<span style="myshop-has:next-moreinfo-product">
+					<a style="myshop-action:next-moreinfo-product" class="myshp_info_next_button btn btn-default btn-sm btn-primary" data-role="button" data-inline="true" data-icon="arrow-r" data-iconpos="right">
+						<span style="myshop-resource:next.lowercase">
+							volgende product
+						</span>
+						<span class="myshp_button_icon">&nbsp;&gt;&gt;</span>
+					</a>
+				</span>
+				<!-- Previous product button -->
+				<span style="myshop-has:previous-moreinfo-product">
+					<a style="myshop-action:previous-moreinfo-product" class="myshp_info_prev_button btn btn-default btn-sm btn-primary" data-role="button" data-inline="true" data-icon="arrow-l">
+						<span class="myshp_button_icon">&lt;&lt;&nbsp;</span>
+						<span>
+							<span style="myshop-resource:previous.lowercase">
+								vorige product
+							</span>
+						</span>
+					</a>
+				</span>
+				<div class="clear"></div>
+				<!-- Navigation divider -->
+			</div>
+        </div>
+        <!-- Productinfo -->
+        <div style="myshop-block:productlist;" class="myshp-product">
+            <!-- Display product block -->
+			
+            <div style="myshop-block:product;" class="myshp_info_product myshp_info_gallery_1" itemscope="itemscope" itemtype="http://schema.org/Product">
+                <!-- Image -->
+				<div class="row" id="productMain">
+					<div class="myshp_info_image col-sm-6" style="myshop-has-product-value:image">
+						<div class="myshp_info_image_large">
+							<span style="myshop-has-product:lightbox">
+								<span style="myshop-product:image;">lightbox-zoom</span>
+							</span>
+							<span style="myshop-not-has-product:lightbox">
+								<img src="myshop-product:image;" alt="myshop-product:title" itemprop="image" />
+							</span>
+							<span style="myshop-has:extra-images">
+								<span style="myshop-repeat:extra-images-large">
+									<span style="myshop-has-product:lightbox">
+										<a href="myshop-value:extra-image-large;" class="myshp_info_image_large_extra" style="display:none;" alt="myshop-product:title" title="myshop-product:title">
+											<img src="myshop-value:extra-image-large;" alt="myshop-product:title"/>
+										</a>
+									</span>
+									<span style="myshop-not-has-product:lightbox">
+										<img src="myshop-value:extra-image-large;" style="display:none;" alt="myshop-product:title"/>
+									</span>
+								</span>
+							</span>
+						</div>
+						<span style="myshop-has-product:lightbox">
+							<script type="text/javascript">
+								$(window).load(function(){
+									if($.fn.lightBox){
+										$('.myshp_info_image_large a.myshp_info_image_large_extra').lightBox();
+									}
+								})
+							</script>
+						</span>
+						<!-- Small images -->
+						<span style="myshop-has:extra-images">
+							<div class="myshp_gallery_navigation">
+								<div class="myshp_gallery_navigation_pager"></div>
+								<div class="myshp_gallery_navigation_pager_total"></div>
+								<div class="myshp_gallery_navigation_caption"></div>
+								<div class="myshp_gallery_navigation_controls">
+									
+									<a class="myshp_gallery_navigation_prev ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" href="javascript:void(0)" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-inline="true" shape="rect" role="button" aria-disabled="false" title="Previous">
+										<span class="ui-button-icon-primary ui-icon ui-icon-seek-prev"></span>
+										<span class="ui-button-text">
+											<span class="myshp_gallery_navigation_icon">Previous</span>
+										</span>								
+									</a>
+									
+									<a class="myshp_gallery_play ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" href="javascript:void(0)" data-role="button" data-iconpos="notext" data-inline="true" data-icon="play" shape="rect" role="button" aria-disabled="false" title="pause">
+										<span class="ui-button-icon-primary ui-icon ui-icon-pause"></span>
+										<span class="ui-button-text">pause</span>
+									</a>
+									<a class="myshp_gallery_navigation_next ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" href="javascript:void(0)" data-role="button" data-icon="arrow-r" data-iconpos="notext" data-inline="true" shape="rect" role="button" aria-disabled="false" title="Next">
+										<span class="ui-button-icon-primary ui-icon ui-icon-seek-next"></span>
+										<span class="ui-button-text">
+											<span class="myshp_gallery_navigation_icon">Next</span>
+										</span>
+									</a>
+									
+								</div>
+								<div class="clear"></div>
+							</div>
+						</span>
+					</div>
+					
+					<!-- Productfields -->
+					<div class="myshp_info_features col-sm-6">
+						<div class="box">
+							<!-- Title --><h1 style="myshop-product:title;" class="text-center" itemprop="name"></h1>
+							<!-- Description -->
+							<p style="myshop-product:description-short;" class="goToDescription" itemprop="description">
+								&nbsp;
+							</p>
+							
+							<!-- Extra bestelvelden -->
+							<span style="myshop-repeat:order-fields">
+								<div class="myshp_info_row myshp_info_row_control">
+									<strong style="myshop-value:label">
+										label
+									</strong>
+									<span style="myshop-is:order-field-required">
+										&nbsp;*
+									</span>
+									<span style="myshop-value:control">order field control</span>
+								</div>
+							</span>
+							<div class="myshp_info_row" style="myshop-is-product-visible:price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/AggregateOffer">
+								<!--div class="myshp_info_price_label">
+									<strong style="myshop-product:price-label">
+									</strong>
+								</div -->
+								<p class="myshp_info_price_value price">
+									<span style="myshop-product:price;" itemprop="price"></span>
+									<span style="myshop-has-product-value:monthly-costs-formatted">
+										&#160;<span style="myshop-resource:klarna.or">of</span>&#160;<span style="myshop-product:monthly-costs-formatted;">kosten</span>&#160;<span style="myshop-resource:klarna.permonth">p/mnd</span>*
+										<span style="myshop-test:{$Language}=='nl'"><br/><img style="width:150px" src="http://www.afm.nl/~/media/Images/wetten-regels/kredietwaarschuwing/balk_afm3-jpg.ashx"/></span>
+									</span>
+								</p>
+							</div>
+							<div class="text-center buttons">
+								<span style="myshop-is:in-stock">
+									<span style="myshop-has:order;">
+										<span style="myshop-has:quantity-field;">
+											<div class="myshp_info_label">
+												<strong style="myshop-control-label:quantity">
+													label
+												</strong>
+											</div>
+											<div class="myshp_info_value">
+												<input type="text" size="3" style="myshop-control:quantity"/>
+												<span style="myshop-control-label:quantity-metric">
+													&nbsp;
+												</span>
+											</div>
+										</span>
+										<div class="myshp_info_value">
+											<a href="#" class="myshp_button myshp_info_order btn btn-primary" style="myshop-action:order;" data-role="button">
+												<i class="icon-shopping-cart fa">&nbsp;</i>
+												<span style="myshop-resource:order.lowercase">
+													bestel
+												</span>
+											</a>
+										</div>
+									</span>
+								</span>
+								<div style="myshop-has:favorites">
+									<div style="myshop-is:favorite">
+										<a style="myshop-action:favorite-remove" href="#" class="myshp_button myshp_info_favorites btn btn-primary" data-role="button" data-icon="star" data-iconpos="right">
+												<i class="fa icon-heart-empty">&nbsp;</i>
+												<span style="myshop-resource:favorites.remove">
+													Verwijder uit wenslijst
+												</span>
+										</a>
+									</div>
+									<div style="myshop-not-is:favorite">
+										<a style="myshop-action:favorite-add" href="#" class="myshp_button myshp_info_favorites btn btn-primary" data-role="button" data-icon="star" data-iconpos="right">
+											<i class="fa icon-heart">&nbsp;</i>
+											<span style="myshop-resource:favorites.add">
+												Voeg toe aan wenslijst
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="myshp_info_extra_images_thumbs row" id="thumbs">
+							<div style="myshop-product:image;display:none;">lightbox-zoom</div>
+							<span style="myshop-repeat:extra-images" >
+								<a class="col-xs-4 thumb" style="myshop-action:extra-image" alt="myshop-product:title" title="myshop-product:title">
+									<img src="myshop-value:extra-image" alt="myshop-product:title" title="myshop-product:title" class="img-responsive"/>
+								</a>
+							</span>
+						</div>
+						
+						
+					</div>
+				</div>		
+                <div class="box" id="details">
+					<!-- Fields -->
+					<span style="myshop-repeat:product-features">
+						<span style="myshop-not-is:feature-price">
+							<span class="myshp_info_row" style="myshop-has-value:feature">
+								<h4 style="myshop-feature:label">
+								</h4>
+								<p style="myshop-feature:value">
+								</p>
+							</span>
+						</span>
+					</span>
+					<hr />
+					<div class="myshp_info_description_long" style="myshop-product:description-long;"></div>
+				</div>
+				<div class="clear"></div>
+				
+				<div style="myshop-has-product-value:monthly-costs-formatted">*&#160;
+					<span style="myshop-resource:klarna.usingklarna">Bij gebruik van</span>&#160;
+					<span style="myshop-test:{$Language}=='de'">
+						<img src="https://cdn.klarna.com/public/images/DE/logos/v1/account/DE_account_logo_std_blue-black.png?width=70" title="Klarna Ratenkauf"/>
+					</span>
+					<span style="myshop-test:{$Language}!='de'">
+						<img src="https://cdn.klarna.com/public/images/NL/logos/v1/account/NL_account_logo_std_blue-black.png?width=70" title="Klarna account"/>
+					</span>
+					<br/><br/>
+				</div>
+				
+                <div class="clear"></div>
+				
+                <!-- Begin - Related Products -->
+                <div class="myshp_basket_related row same-height-row" style="myshop-block:related-products">
+					<div class="col-md-3 col-sm-6">
+						<div class="box same-height" style="height: 379px;">
+							<h3 style="myshop-resource:related.title">
+								Bijpassende artikelen
+							</h3>
+						</div>
+					</div>
+                    <span style="myshop-block:productlist">
+                        <div style="myshop-block:product" class="col-md-3 col-sm-6">
+                            <div class="product same-height">
+								<div valign="top" class="myshp_basket_related_product_row myshp_basket_related_product_image_container flip-container ">
+                                    <div class="flipper">
+										<span style="myshop-has-product-value:image">
+											<span class="myshp_basket_related_product_image front">
+												<a style="myshop-action:moreinfo;">
+													<img class="img-responsive" src="myshop-product:image;" title="myshop-product:title" alt="myshop-product:title"/>
+												</a>
+											</span>
+											<span class="myshp_basket_related_product_image back">
+												<a style="myshop-action:moreinfo;">
+													<img class="img-responsive" src="myshop-product:image;" title="myshop-product:title" alt="myshop-product:title"/>
+												</a>
+											</span>
+										</span>
+									</div>
+								</div>
+                                <a class="invisible" style="myshop-action:moreinfo;">
+									<img class="img-responsive" src="myshop-product:image;" title="myshop-product:title" alt="myshop-product:title"/>
+                                </a>
+								<div valign="top" class="myshp_basket_related_product_row myshp_basket_related_product_features text">
+									<h3 style="myshop-product:title;"></h3>
+									<p class="myshp_basket_related_product_description" style="myshop-product:description-short;"></p>
+									<div class="myshp_basket_related_features">
+										<span style="myshop-repeat:product-features">
+											<span style="myshop-has-value:feature">
+												<span style="myshop-not-is:feature-price">
+													<p class="myshp_basket_related_field price" style="myshop-feature:value;">
+													</p>
+												</span>
+												<span style="myshop-is:feature-price">
+													<p class="myshp_basket_related_field price" style="myshop-feature:value;">
+													</p>
+												</span>
+											</span>
+										</span>
+										<span style="myshop-is:in-stock">
+											<span style="myshop-has:order">
+												<span style="myshop-has:control-quantity">
+													<span class="myshp_basket_related_label">
+														<strong style="myshop-control-label:quantity"></strong>
+													</span>
+													<span class="myshp_basket_related_field">
+														<input style="myshop-control:quantity" size="3" class="myshp_basket_related_field"/>&nbsp;
+														<span style="myshop-control-label:quantity-metric">
+															&nbsp;
+														</span>
+													</span>
+												</span>
+											</span>
+										</span>
+										
+										<!-- Begin - Control Buttons -->
+										<div class="myshp_control_buttons">
+											<a class="myshp_button myshp_button_moreinfo btn btn-primary" style="myshop-action:moreinfo;" data-role="button">
+												<span style="myshop-resource:moreinfo">
+													Meer info
+												</span>
+											</a>
+											<div style="myshop-is:in-stock">
+												<span style="myshop-has:order">
+													<a class="myshp_button myshp_button_order btn btn-primary" style="myshop-action:order" data-role="button">
+														<i class="icon-shopping-cart fa">&nbsp;</i>
+														<span style="myshop-resource:order.lowercase">
+															bestel
+														</span>
+													</a>
+												</span>
+											</div>
+										</div>
+										<!-- End - Control Buttons -->
+										
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </span>
+                </div>
+                <!-- End - Related Products -->
+                <!-- Product block end -->
+            </div>
+            <!-- Productlist block end -->
+        </div>
+        <div class="clear"></div>
+		
+		<!-- Begin - MijnWinkel PoweredBy Block -->
+        <div class="myshp_info_footer_bottom">
+            <div class="myshop_info_footer" style="myshop-default:powered-by">
+            </div>
+        </div>
+		<!-- End - MijnWinkel PoweredBy Block -->
+		
+    </body>
+</html>

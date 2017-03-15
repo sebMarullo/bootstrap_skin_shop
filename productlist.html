@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css" style="myshop-block:style-productlist">
+			
+			
+			
+			.myshp_list_product {
+				/*myshop-width:productlist-column-width % !important;
+				myshop-padding-right:product-margin-width %;
+				position: relative;
+				min-height: 1px;
+				padding-right: 15px;
+				padding-left: 15px;
+				display:inline-block;*/
+			}
+			.myshp_list_product_image a{
+				max-width:100%;
+			}
+			.myshp_list_product:hover {
+			}
+
+			.myshp_list_product .myshp_list_product_image img {
+				/*myshop-max-width:product-image-width px;
+				myshop-max-height:product-image-height px;
+				myshop-width:product-image-width px;
+				myshop-height:product-image-height px;*/
+			}
+			
+        </style>
+        
+		<!--<meta name="myshop-macro-start" content="if lte IE 7"/>
+			<script type="text/javascript" src="/views/library/lib_productlist/js/IE_compact.js"></script>
+		<meta name="myshop-macro-end" content="endif"/>-->
+    </head>
+    <body>
+		<!-- Begin - Product list navigation top -->
+        <div style="myshop-has:results">
+            <div style="myshop-has:top-navigation;">
+                <div class="myshp_list_navigation myshp_list_navigation_top">
+                	<div class="myshp_list_navigation_buttons">
+	                    <!-- Begin -  Pagination Mode -->
+	                    
+		                    <!-- Advanced -->
+		                    <span style="myshop-has:pagina">
+			                    <div style="myshop-has:previous-page">
+									<a style="myshop-action:previous-page" class="myshp_list_navigation_button_next">&lt;</a>
+								</div>
+								
+								<div class="myshp_list_pagination">
+									<ul>
+										<li style="myshop-repeat:page-links">
+											<span style="myshop-is:page-link-separator"> <span class="myshp_list_pagination_item_separator">...</span> </span>
+											<span style="myshop-not-is:page-link-separator">
+											    <span style="myshop-is:page-link-active">
+											      	<a style="myshop-action:page-link" class="myshp_list_pagination_item_active">
+											      		<span>
+											      			<span style="myshop-label:page-link-number"></span>
+											      		</span>
+											      	</a>
+											    </span>
+												<span style="myshop-not-is:page-link-active">
+											      	<a style="myshop-action:page-link" >	
+											      		<span style="myshop-label:page-link-number"></span>
+											      	</a>
+											    </span>
+											</span>
+										</li>
+									</ul>
+								</div>
+	
+								<div style="myshop-has:next-page">
+									<a style="myshop-action:next-page" class="myshp_list_navigation_button_prev">&gt;</a>
+								</div>
+							</span>
+	
+							<!-- End - Advanced -->
+	
+							<!-- Simplified -->
+							<span style="myshop-not-has:pagina">
+								<div style="myshop-has:previous-page">
+									<a style="myshop-action:previous-page" class="myshp_list_navigation_button_next">&lt;&lt; <span style="myshop-resource:prev">Vorige</span></a>
+									&nbsp;|&nbsp;
+								</div>
+								<span style="myshop-default:start-count"/>&nbsp;-&nbsp;<span style="myshop-default:end-count"/>
+								<div style="myshop-has:next-page">
+									&nbsp;|&nbsp;
+									<a style="myshop-action:next-page" class="myshp_list_navigation_button_prev"><span style="myshop-resource:next">Volgende</span> &gt;&gt;</a>
+								</div>
+							</span>
+							<!-- End - Simplified -->
+	
+						<!-- End - Pagination -->
+					</div>
+					<div class="clear"></div>
+                </div>
+            </div>
+        </div>
+		<!-- End - Product list navigation top -->
+
+		<!-- Begin - Product list Search block -->
+		<div class="box">
+			<table width="100%" class="table-condensed"><tr><td>
+			<div style="myshop-has:searchblock;">
+				<div style="myshop-is:search-method-quick">
+					<div class="myshp_info_search_block myshp_info_search_quick">
+						<fieldset>
+							<table width="100%" class="table-condensed">
+								<tr>
+									<td>
+										<label><span style="myshop-resource:allproducts">Alle producten</span></label>			
+									</td>
+									<td>
+										<span style="myshop-search-field:control-global;"/>			
+									</td>
+									<td>
+										<a style="myshop-action:search;" class="myshp_button myshp_button_search btn btn-default btn-sm btn-primary" data-role="button" data-mini="true" data-icon="search" data-iconpos="right">
+											<span>
+												<span style="myshop-resource:search">
+													Search
+												</span>
+											</span>
+										</a>			
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div style="myshop-is:search-method-extended">
+					<div class="myshp_info_search_block myshp_info_search_extended">
+						<div style="myshop-repeat:search-fields;">
+							<fieldset>
+								<table style="myshop-not-has:search-field-max;" width="100%" class="table-condensed">
+									<tr>
+										<td>
+											<label><span style="myshop-search-field:label"></span>:</label>	
+										</td>
+										<td>
+											<span style="myshop-search-field:control"></span>    	
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+							<span style="myshop-has:search-field-max;">
+								<fieldset class="myshp_info_search_extended_min_max">
+									<table width="100%" class="table-condensed">
+										<tr>
+											<td>
+												<label>
+													<span style="myshop-search-field:label"></span>&#160;
+													<span style="myshop-resource:from;">
+														van
+													</span>:
+												</label>	
+											</td>
+											<td>
+												<input size="8" style="myshop-search-field:control"/>
+											</td>
+											<td>
+												<label>
+													<span style="myshop-search-field:label"></span>&#160;
+													<span style="myshop-resource:to;">
+														t/m
+													</span>:
+												</label>	
+											</td>
+											<td>
+												<input size="8" style="myshop-search-field:control-max"/>
+											</td>
+										</tr>
+									</table>
+								</fieldset>
+							</span>
+						</div>
+						<div style="myshop-has:global-search">
+							<fieldset>
+								<table width="100%" class="table-condensed">
+									<tr>
+										<td>	
+											<label>
+												<span style="myshop-resource:allproducts">
+													Alle producten
+												</span>
+											</label>
+										</td>
+										<td>
+											<span style="myshop-search-field:control-global;"></span>
+										</td>
+										<td>
+											<a style="myshop-action:search;" class="myshp_button myshp_button_search btn btn-default btn-sm btn-primary" data-role="button" data-mini="true" data-icon="search" data-iconpos="right">
+												<span>
+													<span style="myshop-resource:search">
+														Search
+													</span>
+												</span>
+											</a>		
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			</td></tr></table>
+			<!-- End - Product list Search block -->
+		</div>
+		
+        <div class="clear">&nbsp;</div>
+		
+        <div style="myshop-has:results">
+            <div style="myshop-block:productlist;" class="myshp_list" itemscope="itemscope" itemtype="http://schema.org/ItemList">
+                <div class="myshp_list_row row products">
+                    <span style="myshop-repeat:product-columns;">
+                        <div class="col-md-4 col-sm-6">
+							<div style="myshop-block:product;" class="myshp_list_product product" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/Product">
+								<div class="myshp_list_product_box">
+									
+										<div class="flip-container">
+											<!-- Begin - Product Image -->
+											<div class="myshp_list_product_image_box myshp_list_product_image flipper">
+												<span style="myshop-has-product-value:image;" class="front">
+													<span style="myshop-has-product:lightbox;">
+														<span style="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+													</span>
+													<span style="myshop-not-has-product:lightbox;">
+														<span style="myshop-has:moreinfo">
+															<a style="myshop-action:moreinfo;">
+																<img class="img-responsive" src="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+															</a>
+														</span>
+														<span style="myshop-not-has:moreinfo">
+															<img class="img-responsive" src="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+														</span>
+													</span>
+												</span>
+												<span style="myshop-has-product-value:image;" class="back">
+													<span style="myshop-has-product:lightbox;">
+														<span style="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+													</span>
+													<span style="myshop-not-has-product:lightbox;">
+														<span style="myshop-has:moreinfo">
+															<a style="myshop-action:moreinfo;">
+																<img class="img-responsive" src="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+															</a>
+														</span>
+														<span style="myshop-not-has:moreinfo">
+															<img class="img-responsive" src="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+														</span>
+													</span>
+												</span>
+											</div>
+											<!-- End - Product Image -->
+										</div>
+										<a style="myshop-action:moreinfo;" class="myshp_list_product_image invisible">
+											<img class="img-responsive" src="myshop-product:image;" alt="myshop-product:title;" itemprop="myshop-product:itemprop-image"/>
+										</a>
+									
+									
+										<div class="text">
+											<!-- Begin - Product Title -->
+											<div style="myshop-has-product-value:title">
+												<div style="myshop-has:moreinfo">
+													<h3 class="myshp_list_product_title">
+														<a href="#" style="myshop-action:moreinfo;">
+															<span style="myshop-product:title" itemprop="myshop-product:itemprop-title">
+																&nbsp;
+															</span>
+														</a>
+													</h3>
+												</div>
+												<span style="myshop-not-has:moreinfo">
+													<h3 class="myshp_list_product_title">
+														<div class="myshp_list_product_border_top_corner_right">
+															<span style="myshop-product:title" itemprop="myshop-product:itemprop-title">
+																&nbsp;
+															</span>
+														</div>
+													</h3>
+												</span>
+											</div>
+											<!-- End - Product Title -->
+											<!-- Begin - Product Features -->
+											<div class="myshp_list_product_features myshp_list_product_body">
+												<table style="myshop-has:label">
+													<span style="myshop-repeat:product-features">
+														<tr style="myshop-has-value:feature">
+															<span style="myshop-not-is:feature-price">
+																<td class="myshp_list_product_feature_label">
+																	<strong>
+																		<span style="myshop-feature:label"></span>:
+																	</strong>
+																</td>
+																<td class="myshp_list_product_feature_value">
+																	<span style="myshop-feature:value;"></span>
+																</td>
+															</span>
+														</tr>
+													</span>
+													<tr>	
+														<span style="myshop-is:in-stock">
+															<span style="myshop-has:order">
+																<span style="myshop-has:quantity-field">
+																	<span class="myshp_list_product_quantity_field">
+																		<td class="myshp_list_product_feature_label">
+																		<strong style="myshop-has:label"><span style="myshop-control-label:quantity"/>:&nbsp;</strong>
+																		</td>
+																		<td class="myshp_list_product_feature_value">
+																		<input style="myshop-control:quantity;" size="3"/>
+																		</td>
+																	</span>
+																</span>
+															</span>
+														</span>
+													</tr>
+												</table>
+											</div>
+											<div style="myshop-not-has:label">
+												<div style="myshop-repeat:product-features">
+													<div style="myshop-has-value:feature">
+														<div style="myshop-not-is:feature-price">
+															<span style="myshop-feature:value;" class="myshp_list_product_value"></span>
+														</div>
+														<span style="myshop-has:features-on-same-line" class="myshp_list_product_value"></span>
+														<span style="myshop-not-has:features-on-same-line" class="clear myshp_list_product_break"></span>
+													</div>
+												</div>
+												<div style="myshop-is:in-stock">
+													<div style="myshop-has:order">
+														<div style="myshop-has:quantity-field">
+															<div class="myshp_list_product_value">
+																<input style="myshop-control:quantity;" size="3"/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- End - Product Features -->
+											<!-- Begin - Product Price -->
+											<p class="myshp_list_product_price price" itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer">
+												<!--<div style="myshop-has:label;">
+													<strong>
+														<span style="myshop-product:price-label"></span>:
+													</strong>
+												</div>-->
+												<div style="myshop-is-product-visible:price">
+													<!--
+													<span style="myshop-product:price;" class="myshp_list_product_price_value" itemprop="price"></span>
+													-->
+													<meta itemprop="priceCurrency" content="myshop-product:currency" style="myshop-product:currency-sign"/>&nbsp;<span style="myshop-product:price-no-currency;" itemprop="myshop-product:itemprop-price"></span>
+												</div>
+											</p>
+											<!-- End - Product Price -->
+											
+											<!-- Begin - Product Control Buttons -->
+											<p class="myshp_control_buttons buttons">
+												<div style="myshop-has:moreinfo-link">
+													 <a href="#" style="myshop-action:moreinfo;" class="myshp_button myshp_button_moreinfo btn btn-default" itemprop="url" data-role="button" data-icon="arrow-r" data-iconpos="right">
+														<span>
+															<span style="myshop-resource:moreinfo">
+																meerinfo
+															</span>
+														</span>
+													</a>&nbsp;
+												</div>
+												<div style="myshop-is:in-stock">
+													<div style="myshop-has:order">
+														<div style="myshop-has:quantity-field">
+															 <a href="#" style="myshop-action:order;" class="myshp_button myshp_button_order btn btn-primary" data-role="button" data-icon="arrow-r" data-iconpos="plus">
+																<span>
+																	<i class="icon-shopping-cart fa">&nbsp;</i>
+																	<span style="myshop-resource:order.lowercase">
+																		bestellen
+																	</span>
+																</span>
+															</a>
+														</div>
+														<div style="myshop-not-has:quantity-field">
+															<a href="#" style="myshop-action:order;" class="myshp_button myshp_button_order btn btn-primary" data-role="button" data-icon="arrow-r" data-iconpos="right">
+																<span>
+																	<i class="icon-shopping-cart fa">&nbsp;</i>
+																	<span style="myshop-resource:order.lowercase">
+																		bestellen
+																	</span>
+																</span>
+															</a>
+														</div>
+													</div>
+												</div>
+											</p>
+										</div>
+									<!-- End - Product Control Buttons -->
+									
+									<div class="clear"></div>
+								</div>
+							</div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+		
+		<!-- Begin - Product list navigation bottom -->
+        <div style="myshop-has:results">
+			<div class="myshp_list_navigation myshp_list_navigation_bottom pages">
+				<div class="myshp_list_navigation_buttons">
+	                <!-- Begin -  Pagination Mode -->
+	                    
+	                    <!-- Advanced -->
+	                    <span style="myshop-has:pagina">
+							
+							<div class="myshp_list_pagination">
+								<ul class="pagination">
+									<li>									
+										<div style="myshop-has:previous-page">
+											<a style="myshop-action:previous-page" class="myshp_list_navigation_button_next">&laquo;</a>
+										</div>
+									</li>
+									<li style="myshop-repeat:page-links">
+										<span style="myshop-is:page-link-separator"> <span class="myshp_list_pagination_item_separator">...</span> </span>
+										<span style="myshop-not-is:page-link-separator">
+										    <span style="myshop-is:page-link-active">
+										      	<a style="myshop-action:page-link" class="myshp_list_pagination_item_active">
+										      		<span>
+										      			<span style="myshop-label:page-link-number"></span>
+										      		</span>
+										      	</a>
+										    </span>
+											<span style="myshop-not-is:page-link-active">
+										      	<a style="myshop-action:page-link" >	
+										      		<span style="myshop-label:page-link-number"></span>
+										      	</a>
+										    </span>
+										</span>
+									</li>
+									<li>												
+										<div style="myshop-has:next-page">
+											<a style="myshop-action:next-page" class="myshp_list_navigation_button_prev">&raquo;</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+	
+						</span>
+	
+						<!-- End - Advanced -->
+	
+						<!-- Simplified -->
+						<span style="myshop-not-has:pagina">
+							<div style="myshop-has:previous-page">
+								<a style="myshop-action:previous-page" class="myshp_list_navigation_button_next">&lt;&lt; <span style="myshop-resource:prev">Vorige</span></a>
+								&nbsp;|&nbsp;
+							</div>
+							<span style="myshop-default:start-count"/>&nbsp;-&nbsp;<span style="myshop-default:end-count"/>
+							<div style="myshop-has:next-page">
+								&nbsp;|&nbsp;
+								<a style="myshop-action:next-page" class="myshp_list_navigation_button_prev"><span style="myshop-resource:next">Volgende</span> &gt;&gt;</a>
+							</div>
+						</span>
+						<!-- End - Simplified -->
+	
+					<!-- End - Pagination -->
+            	</div>
+            	<div class="clear"></div>
+            </div>
+		</div>
+		<!-- End - Product list navigation bottom -->
+			
+        <div class="clear"></div>
+        
+        <div style="myshop-default:powered-by" class="myshp_poweredby"></div>
+		
+		<!-- Begin - No Results -->
+        <div style="myshop-not-has:results" class="myshp_list_no_results">
+            <p style="myshop-resource:noresult">
+                Helaas, er zijn geen resultaten.
+            </p>
+        </div>
+		<!-- End - No Results -->
+		<script type="text/javascript"> 
+			$(function(){
+				jQuery.fn.equalHeightsProducts = function(px) {
+					jQuery(this).each(function(){
+						/* Set image height */
+			
+						/*Set Product Box Height */
+						var currentTallest = 0;
+						jQuery(this).find('.myshp_list_product_box').each(function(i){
+							if (jQuery(this).height() > currentTallest) { currentTallest = jQuery(this).height(); }
+						});
+						jQuery(this).find('.myshp_list_product_box').css({'min-height': currentTallest});
+			
+						/* Set Product Title height */
+						currentTallest = 0;
+						jQuery(this).find('h3').each(function(i){
+							if (jQuery(this).height() > currentTallest) { currentTallest = jQuery(this).height(); }
+						});
+						jQuery(this).find('h3').css({'min-height': currentTallest});
+						
+						/*Set Product Image height*/
+						currentTallest = 0;
+						jQuery(this).find('.myshp_list_product_image').each(function(i){
+							if (jQuery(this).height() > currentTallest) { currentTallest = jQuery(this).height(); }
+						});
+						jQuery(this).find('.myshp_list_product_image').css({'min-height': currentTallest});
+		
+						/* Set Product Features Height */
+						currentTallest = 0;
+						jQuery(this).find('.myshp_list_product_features').each(function(i){
+							if (jQuery(this).height() > currentTallest) { currentTallest = jQuery(this).height(); }
+						});
+						jQuery(this).find('.myshp_list_product_features').css({'min-height': currentTallest});
+						
+					});
+					return this;
+				};
+		
+				setTimeout("jQuery('.myshp_list_row').equalHeightsProducts()",500);
+		
+			});
+		</script>
+		
+    </body>
+</html>
